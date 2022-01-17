@@ -26,11 +26,11 @@ public class ChatRvAdapter extends RecyclerView.Adapter {
         View view;
         switch (viewType) {
             case 0:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_msg_rv_item, parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_msg_rv_item, parent, false);
                 return new UserViewHolder(view);
 
             case 1:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bot_msg_rv_item, parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bot_msg_rv_item, parent, false);
                 return new BotViewHolder(view);
         }
 
@@ -40,22 +40,23 @@ public class ChatRvAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChatsModel chatsModel = chatsModelArrayList.get(position);
-        switch (chatsModel.getSender()){
+        switch (chatsModel.getSender()) {
             case "user":
-                ((UserViewHolder)holder).tvUsermsg.setText(chatsModel.getMessage());
-               break;
+                ((UserViewHolder) holder).tvUsermsg.setText(chatsModel.getMessage());
+                break;
             case "bot":
-                ((BotViewHolder)holder).tvBotmsg.setText(chatsModel.getMessage());
-               break;
+                ((BotViewHolder) holder).tvBotmsg.setText(chatsModel.getMessage());
+                break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
         switch (chatsModelArrayList.get(position).getSender()) {
+            // this is switch case
             case "user":
                 return 0;
-            case"bot":
+            case "bot":
                 return 1;
             default:
                 return -1;
